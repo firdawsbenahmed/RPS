@@ -20,7 +20,7 @@ def run_hedge(T , LS = 0.05) :
     P2 = np.array([0.2 , 0.5 , 0.3])
     p1_hist , p2_hist = [P1.copy()] , [P2.copy()]
 
-    for index in range(RN) : 
+    for _ in range(RN) : 
        rp1 = R @ P2  ## is player 1 scores showing how well that move does against player 2 current strategy
        rp2 = -(P1 @ R)  ## how well each of player 2 moves does against player 1 current strategy  ; when player 1 chosses the rows the player 2 is chosing the columns this is why we inverses the order of the multiplucation 
 # Moves that scored better get a higher probability next round.     
