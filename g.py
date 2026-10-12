@@ -52,9 +52,9 @@ def run_funct_play(RN) :
         SP1[a1] += 1 
         SP2[a2] += 1 ## so for each player actually plays that best move so its count goes up by 1
 
-        hist1.append(SP1 / SP1.sum())
+        hist1.append( SP1 / SP1.sum())
 
-        return np.array(hist1)
+    return np.array(hist1)
 
 ## run 
 p_hist, q_hist = run_hedge(RN)
