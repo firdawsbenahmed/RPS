@@ -34,3 +34,27 @@ def run_hedge(T , LS = 0.05) :
        p2_hist.append(P2.copy())
     return np.array(p1_hist) ,np.array(p2_hist)
 # here players learn which moves would have scored well against thier opp current strategy rhen play those more and repeat.
+
+def run_funct_play(T) : 
+    SP1 = np.array([3.0 ,2.0 , 1.0]) ## a start to learn from
+    SP2 = np.array([1.0 , 2.0 , 3.0 ])
+    ## for history needeed later '
+    hist1 = [ SP1 / SP1.sum()] 
+
+    for _ in range(T): 
+        ## how often each player has played each move so far for each run probs 
+        P1_seen = SP1 / SP1.sum()
+        P2_seen = SP2 / SP2.sum()
+
+        a1 = np.argmax(R @ P2_seen)
+        a2 = np.argmax (-(P1_seen @ R))
+
+        SP1[a1] += 1 
+        SP2[a2] += 1 ## so for each player actually plays that best move so its count goes up by 1
+
+        hist1.append(SP1 / SP1.sum())
+
+        return np.array(hist1)
+
+
+
